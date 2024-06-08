@@ -1,0 +1,212 @@
+/* Muli Black */
+@font-face {
+	font-family: 'Muli Black';
+
+	src: url("./Muli-Black.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Muli Black Italic */
+@font-face {
+	font-family: 'Muli Black Italic';
+	src: url('./Muli-BlackItalic.ttf') format('truetype');
+	src: url('./Muli-BlackItalic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+/* Muli Bold */
+@font-face {
+	font-family: 'Muli Bold';
+	src: url('./Muli-Bold.ttf') format('truetype');
+	src: url('./Muli-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* Muli Bold Italic */
+@font-face {
+	font-family: 'Muli Bold Italic';
+	src: url('./Muli-BoldItalic.ttf') format('truetype');
+	src: url('./Muli-BoldItalic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+
+/* Muli Extra Bold */
+@font-face {
+	font-family: 'Muli Extra Bold';
+	src: url('./Muli-ExtraBold.ttf') format('truetype');
+	src: url('./Muli-ExtraBold.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+}
+
+/* Muli Extra Bold Italic */
+@font-face {
+	font-family: 'Muli Extra Bold Italic';
+	src: url('./Muli-ExtraBoldItalic.ttf') format('truetype');
+	src: url('./Muli-ExtraBoldItalic.woff') format('woff');
+	font-weight: 800;
+	font-style: italic;
+}
+
+/* Muli Extra Light */
+@font-face {
+	font-family: 'Muli Extra Light';
+	src: url('./Muli-ExtraLight.ttf') format('truetype');
+	src: url('./Muli-ExtraLight.woff') format('woff');
+	font-weight: 200;
+	font-style: normal;
+}
+
+/* Muli Extra Light Italic */
+@font-face {
+	font-family: 'Muli Extra Light Italic';
+	src: url('./Muli-ExtraLightItalic.ttf') format('truetype');
+	src: url('./Muli-ExtraLightItalic.woff') format('woff');
+	font-weight: 200;
+	font-style: italic;
+}
+
+/* Muli Italic */
+@font-face {
+	font-family: 'Muli Italic';
+	src: url('./Muli-Italic.ttf') format('truetype');
+	src: url('./Muli-Italic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+/* Muli Light */
+@font-face {
+	font-family: 'Muli Light';
+	src: url('./Muli-Light.ttf') format('truetype');
+	src: url('./Muli-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+/* Muli Light Italic */
+@font-face {
+	font-family: 'Muli Light Italic';
+	src: url('./Muli-LightItalic.ttf') format('truetype');
+	src: url('./Muli-LightItalic.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+}
+
+/* Muli Regular */
+@font-face {
+	font-family: 'Muli';
+	src: url('./Muli-Regular.ttf') format('truetype');
+	src: url('./Muli-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Muli Semi Bold */
+@font-face {
+	font-family: 'Muli Semi Bold';
+	src: url('./Muli-SemiBold.ttf') format('truetype');
+	src: url('./Muli-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+
+/* Muli Semi Bold Italic */
+@font-face {
+	font-family: 'Muli Semi Bold Italic';
+	src: url('./Muli-SemiBoldItalic.ttf') format('truetype');
+	src: url('./Muli-SemiBoldItalic.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
+}
+
+/* Averta Black */
+.averta-black {
+	font-family: 'Muli Black', sans-serif;
+}
+
+/* Averta Black Italic */
+.averta-black-italic {
+	font-family: 'Muli Black Italic', sans-serif;
+	font-style: italic;
+}
+
+/* Averta Bold */
+.averta-bold {
+	font-family: 'Muli Bold', sans-serif;
+	font-weight: bold;
+}
+
+/* Averta Bold Italic */
+.averta-bold-italic {
+	font-family: 'Muli Bold Italic', sans-serif;
+	font-weight: bold;
+	font-style: italic;
+}
+
+/* Averta Extra Bold */
+.averta-extra-bold {
+	font-family: 'Muli Extra Bold', sans-serif;
+	font-weight: 800;
+}
+
+/* Averta Extra Bold Italic */
+.averta-extra-bold-italic {
+	font-family: 'Muli Extra Bold Italic', sans-serif;
+	font-weight: 800;
+	font-style: italic;
+}
+
+/* Averta Extra Light */
+.averta-extra-light {
+	font-family: 'Muli Extra Light', sans-serif;
+	font-weight: 200;
+}
+
+/* Averta Extra Light Italic */
+.averta-extra-light-italic {
+	font-family: 'Muli Extra Light Italic', sans-serif;
+	font-weight: 200;
+	font-style: italic;
+}
+
+/* Averta Italic */
+.averta-italic {
+	font-family: 'Muli Italic', sans-serif;
+	font-style: italic;
+}
+
+/* Averta Light */
+.averta-light {
+	font-family: 'Muli Light', sans-serif;
+	font-weight: 300;
+}
+
+/* Averta Light Italic */
+.averta-light-italic {
+	font-family: 'Muli Light Italic', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+/* Averta Regular */
+.averta-regular {
+	font-family: 'Muli', sans-serif;
+}
+
+/* Averta Semi Bold */
+.averta-semi-bold {
+	font-family: 'Muli Semi Bold', sans-serif;
+	font-weight: 600;
+}
+
+/* Averta Semi Bold Italic */
+.averta-semi-bold-italic {
+	font-family: 'Muli Semi Bold Italic', sans-serif;
+	font-weight: 600;
+	font-style: italic;
+}

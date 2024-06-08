@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradiente-arriba {
+	background-image: linear-gradient(to top, hsl(var(--color-surface-200)) 82%, transparent 100%);
+}
+.gradiente-inferior {
+	background-image: linear-gradient(to bottom, hsl(var(--color-surface-200)) 82%, transparent 100%);
+}
+.gradiente-derecha {
+	background-image: linear-gradient(to right, hsl(var(--color-surface-200)) 82%, transparent 100%);
+}
+.gradiente-izquierda {
+	background-image: linear-gradient(to left, hsl(var(--color-surface-200)) 82%, transparent 100%);
+}
+.inline-img {
+	display: inline-block;
+	position: relative;
+	top: -1px;
+}

@@ -22,6 +22,7 @@
 	let valueSearch = '';
 
 	// buscar valueSearch en el objeto icons por su key y filtrar, mostrar todos los resultados cercanos y asignarlo a iconsJson.list
+	
 
 	// let filteredIcons = Object.keys(icons)
 	// 	.filter((key) => key.toLowerCase().includes(valueSearch.toLowerCase()))

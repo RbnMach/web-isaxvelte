@@ -19,3 +19,19 @@
 	position: relative;
 	top: -1px;
 }
+
+::-webkit-scrollbar {
+	width: 8px; /* Ancho de la barra de desplazamiento */
+	height: 8px;
+}
+
+/* Estilos para el thumb (la parte que se desplaza) */
+::-webkit-scrollbar-thumb {
+	background-color: #9095a5; /* Color de fondo del thumb */
+	border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Estilos para el track (la parte que queda estática) */
+::-webkit-scrollbar-track {
+	background:  hsl(var(--color-neutral)); /* Color de fondo del track */
+}

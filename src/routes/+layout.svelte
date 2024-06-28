@@ -3,11 +3,10 @@
 	import '../styles/fonts/style.css';
 	import { assets } from '$app/paths';
 	import { AppBar, AppLayout, Button, ListItem, ThemeSwitch } from 'svelte-ux';
-	import { Isax } from 'isaxvelte';
 </script>
 
 <AppLayout areas="'header header' 'aside main'" headerHeight={90} navWidth={0}>
-	<AppBar class="gradiente-inferior mx-3 mt-4">
+	<AppBar class="gradiente-inferior mx-3 mt-4 pb-6">
 		<div slot="menuIcon">
 			<img src="{assets}/favicon.png" alt="" width="55" class="mx-1" />
 		</div>

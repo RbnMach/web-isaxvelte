@@ -1,28 +1,46 @@
-<script>
+<script lang="ts">
 	import { assets } from '$app/paths';
-	import { Button, Card, Grid, MultiSelectField, TextField } from 'svelte-ux';
-	import { mdiMagnify } from '@mdi/js';
-	import { Isax } from 'isaxvelte';
+	import {
+		Button,
+		Card,
+		InfiniteScroll,
+		MultiSelectField,
+		RangeField,
+		Shine,
+		TextField
+	} from 'svelte-ux';
+	import { mdiMagnify, mdiFormatListBulletedType } from '@mdi/js';
 
-	import { icons } from '$lib/isaxvelte';
+	import { listIcons } from 'isaxvelte-pro';
 
 	const options = [
-		{ name: 'Linear', value: 'Linear' },
-		{ name: 'Bold', value: 'Bold' },
-		{ name: 'Broken', value: 'Broken' },
-		{ name: 'Bulk', value: 'Bulk' },
-		{ name: 'Outline', value: 'Outline' },
-		{ name: 'Twotone', value: 'Twotone' }
+		{ name: 'Linear', value: 'linear' },
+		{ name: 'Bold', value: 'bold' },
+		{ name: 'Broken', value: 'broken' },
+		{ name: 'Bulk', value: 'bulk' },
+		{ name: 'Outline', value: 'outline' },
+		{ name: 'Twotone', value: 'twotone' }
 	];
-	let iconsJson = {
-		type: ['Linear'],
-		list: icons
-	};
+
+	let variant: ('linear' | 'bold' | 'broken' | 'bulk' | 'outline' | 'twotone')[] = ['linear'];
+	// let color: string = '#006ed9';
+	let color: string = '#718fad';
+	let size: number = 45;
 
 	let valueSearch = '';
+	let resultIcons = listIcons;
+
+	function filtrarIcons() {
+		if (valueSearch) {
+			resultIcons = listIcons
+				.filter((icon) => icon.name.toLowerCase().includes(valueSearch.toLowerCase()))
+				.slice(0, 10);
+		} else {
+			resultIcons = listIcons;
+		}
+	}
 
 	// buscar valueSearch en el objeto icons por su key y filtrar, mostrar todos los resultados cercanos y asignarlo a iconsJson.list
-	
 
 	// let filteredIcons = Object.keys(icons)
 	// 	.filter((key) => key.toLowerCase().includes(valueSearch.toLowerCase()))
@@ -30,60 +48,114 @@
 	// $: iconsJson.list = filteredIcons;
 </script>
 
-<Grid gap={8}>
-	<div class="flex items-center justify-center" style="height: 75vh;">
-		<div class="text-center">
-			<h1 class="averta-bold text-7xl text-primary">Isaxvelte</h1>
-			<h3 class="text-xl">
-				Iconsax for <img src="{assets}/svelte.svg" alt="" width="24" class="inline-img" /> Svelte
-			</h3>
-			<div class="mt-8">
-				<Button
-					variant="fill"
-					color="primary"
-					rounded="full"
-					size="lg"
-					href="https://www.npmjs.com/package/isaxvelte"
-					target="_blank"
-				>
-					Get Started <img src="{assets}/rocket.svg" alt="Github" width="24" class="inline-img" />
-				</Button>
+<InfiniteScroll items={resultIcons} let:visibleItems perPage={24}>
+	<div class="grid gap-2">
+		<div class="flex items-center justify-center" style="height: 75vh;">
+			<div class="text-center">
+				<h1 class="averta-bold text-7xl text-primary">Isaxvelte</h1>
+				<h3 class="text-xl">
+					Iconsax for <img src="{assets}/svelte.svg" alt="" width="24" class="inline-img" /> Svelte
+				</h3>
+				<div class="mt-8">
+					<Button
+						variant="fill"
+						color="primary"
+						rounded="full"
+						size="lg"
+						href="https://www.npmjs.com/package/isaxvelte"
+						target="_blank"
+					>
+						Get Started <img src="{assets}/rocket.svg" alt="Github" width="24" class="inline-img" />
+					</Button>
+				</div>
 			</div>
 		</div>
+
+		<div class="mx-auto flex flex-wrap items-center justify-center gap-2 px-5">
+			<TextField
+				type="text"
+				label="Search Icon.."
+				labelPlacement="float"
+				placeholder="Enter the name..."
+				class="w-full sm:w-auto md:w-80 lg:w-60"
+				rounded
+				dense
+				icon={mdiMagnify}
+				bind:value={valueSearch}
+				on:change={filtrarIcons}
+			/>
+
+			<MultiSelectField
+				type="text"
+				label="Icon type"
+				labelPlacement="float"
+				placeholder="Enter the type of the icon..."
+				class="w-full sm:w-auto md:w-80 lg:w-60"
+				rounded
+				dense
+				icon={mdiFormatListBulletedType}
+				{options}
+				bind:value={variant}
+				formatSelected={({ options }) => options.map((o) => o.name).join(', ') || ''}
+			/>
+
+			<RangeField
+				label="Font Size"
+				class="w-full sm:w-auto md:w-80 lg:w-60"
+				rounded
+				dense
+				min={14}
+				max={100}
+				bind:value={size}
+			/>
+
+			<TextField
+				type="text"
+				label="Color Icon"
+				labelPlacement="float"
+				placeholder="Code HEX..."
+				class="w-full sm:w-auto md:w-80 lg:w-60"
+				rounded
+				dense
+				bind:value={color}
+			>
+				<div slot="prepend" class="mr-3 grid grid-stack">
+					<div class="h-6 w-6 rounded border" style:background={color} />
+					<input type="color" bind:value={color} class="h-6 w-6 cursor-pointer rounded opacity-0" />
+				</div>
+			</TextField>
+		</div>
+
+		<!-- <Shine depth={1} lightColor="#191E24" lightRadius={1400}> -->
+		<div class="mb-6 mt-6 overflow-auto px-5 pt-4">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-5">
+				{#each visibleItems as icono}
+					<a href={'#'} title={icono.name}>
+						<Card
+							class="mb-1 rounded-3xl bg-surface-100 p-2 drop-shadow duration-300 hover:scale-105"
+						>
+							<div slot="default" class="text-center" style="color: {color}; font-size: {size}px">
+								{#each variant as variant}
+									<svelte:component this={icono} {variant} />
+								{/each}
+							</div>
+							<div slot="contents" class="truncate text-center text-sm font-light text-slate-400">
+								{#if variant.length == 0}
+									<svelte:component this={icono} variant="bold" />
+								{/if}
+								{icono.name}
+							</div>
+						</Card>
+					</a>
+				{/each}
+			</div>
+		</div>
+		<!-- </Shine> -->
 	</div>
-	<div class="flex justify-center px-5">
-		<TextField
-			type="text"
-			label="Search Icon.."
-			labelPlacement="float"
-			placeholder="Enter the name of the icon..."
-			icon={mdiMagnify}
-			class="w-fit"
-			bind:value={valueSearch}
-		/>
-		<MultiSelectField
-			type="text"
-			label="Icon type"
-			labelPlacement="float"
-			placeholder="Enter the type of the icon..."
-			{options}
-			bind:value={iconsJson.type}
-			formatSelected={({ options }) => options.map((o) => o.name).join(', ') || ''}
-			class="w-fit"
-		/>
-	</div>
-	<div class="mb-6 mt-12 px-5">
-		<Grid autoColumns="130px" gap={8}>
-			{#each Object.keys(iconsJson.list) as name}
-				<Card class="p-4 drop-shadow">
-					<div slot="default" class="truncate text-center font-semibold text-info">{name}</div>
-					<div slot="contents" class="text-center text-info-700">
-						{#each iconsJson.type as type}
-							<Isax {name} type={type.toLowerCase()} size="70px" />
-						{/each}
-					</div>
-				</Card>
-			{/each}
-		</Grid>
-	</div>
-</Grid>
+</InfiniteScroll>
+
+<style>
+	:global(input[type='range']) {
+		height: 1.25rem !important;
+	}
+</style>

@@ -36,7 +36,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"isaxvelte": "^1.0.3",
 		"isaxvelte-pro": "^0.0.7",
 		"svelte-ux": "^0.66.5"
 	}

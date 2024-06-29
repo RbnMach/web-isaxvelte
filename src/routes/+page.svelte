@@ -3,10 +3,10 @@
 	import {
 		Button,
 		Card,
+		Drawer,
 		InfiniteScroll,
 		MultiSelectField,
 		RangeField,
-		Shine,
 		TextField
 	} from 'svelte-ux';
 	import { mdiMagnify, mdiFormatListBulletedType } from '@mdi/js';
@@ -23,7 +23,6 @@
 	];
 
 	let variant: ('linear' | 'bold' | 'broken' | 'bulk' | 'outline' | 'twotone')[] = ['linear'];
-	// let color: string = '#006ed9';
 	let color: string = '#718fad';
 	let size: number = 45;
 
@@ -40,13 +39,20 @@
 		}
 	}
 
-	// buscar valueSearch en el objeto icons por su key y filtrar, mostrar todos los resultados cercanos y asignarlo a iconsJson.list
-
-	// let filteredIcons = Object.keys(icons)
-	// 	.filter((key) => key.toLowerCase().includes(valueSearch.toLowerCase()))
-	// 	.map((key) => ({ name: key, value: icons[key] }));
-	// $: iconsJson.list = filteredIcons;
+	let openModal = false;
 </script>
+
+<Drawer bind:open={openModal} placement="bottom" class="h-80">
+	<h1>Contents</h1>
+	<!-- codigo svelte ini -->
+	<pre>
+		{resultIcons[0]}
+	</pre>
+	<!-- codigo svelte fin -->
+	<div slot="actions">
+		<Button on:click={() => (openModal = false)}>Close</Button>
+	</div>
+</Drawer>
 
 <InfiniteScroll items={resultIcons} let:visibleItems perPage={24}>
 	<div class="grid gap-2">
@@ -74,12 +80,13 @@
 		<div class="mx-auto flex flex-wrap items-center justify-center gap-2 px-5">
 			<TextField
 				type="text"
-				label="Search Icon.."
+				label="Search Icon"
 				labelPlacement="float"
 				placeholder="Enter the name..."
 				class="w-full sm:w-auto md:w-80 lg:w-60"
 				rounded
 				dense
+				clearable
 				icon={mdiMagnify}
 				bind:value={valueSearch}
 				on:change={filtrarIcons}
@@ -126,13 +133,12 @@
 			</TextField>
 		</div>
 
-		<!-- <Shine depth={1} lightColor="#191E24" lightRadius={1400}> -->
 		<div class="mb-6 mt-6 overflow-auto px-5 pt-4">
 			<div class="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-5">
 				{#each visibleItems as icono}
-					<a href={'#'} title={icono.name}>
+					<a href={'javascript:void(0)'} title={icono.name} on:click={() => (openModal = true)}>
 						<Card
-							class="mb-1 rounded-3xl bg-surface-100 p-2 drop-shadow duration-300 hover:scale-105"
+							class="mb-1 rounded-3xl bg-surface-100 p-2 duration-500 hover:scale-105 hover:border-primary-100"
 						>
 							<div slot="default" class="text-center" style="color: {color}; font-size: {size}px">
 								{#each variant as variant}
@@ -150,7 +156,6 @@
 				{/each}
 			</div>
 		</div>
-		<!-- </Shine> -->
 	</div>
 </InfiniteScroll>
 
